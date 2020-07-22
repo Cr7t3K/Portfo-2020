@@ -1,8 +1,20 @@
 body {
-    background-color: #bababa;
+    background-color: #262424;
     font-family: 'Source Sans Pro', sans-serif;
     overflow-x: hidden;
-    overflow-y: hidden;
+    //overflow-y: hidden;
+    margin: 0;
+}
+
+video#bgvid {
+    position: fixed; right: 0; bottom: 0;
+    min-width: 100%; min-height: 100%;
+    width: auto; height: auto; z-index: -100;
+    background-size: cover;
+}
+
+body::-webkit-scrollbar {
+    display: none;
 }
 
 h1 {
@@ -11,6 +23,7 @@ h1 {
     font-style: oblique;
     text-align: center;
 }
+
 .login {
     position: absolute;
     top: 20px;
@@ -50,11 +63,275 @@ h1 {
     }
 
 }
+.scroll {
+    height: 50px;
+    width: 1px;
+    background: #fff;
+    position: absolute;
+    bottom: 0;
+    &:before{
+        content: "Scroll and enjoy ";
+        width: max-content;
+        height: 20px;
+        color: #fff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        top: 30%;
+        left: 10px;
+    }
+}
+
+.project {
+    flex-direction: column;
+    position: relative;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #262424;
+    height: 100vh;
+    width: 100%;
+    color: #fff;
+
+    .project-number {
+        position: absolute;
+        top: 0;
+        font-size: 30px;
+        font-weight: 600;
+        font-style: oblique;
+        &:before {
+            content: "";
+            height: 15px;
+            width: 1px;
+            background: #fff;
+            display: flex;
+            margin: 0 50%;
+        }
+    }
+
+    h1 {
+        font-size: 70px;
+        .project-since {
+            font-size: 40px;
+            font-weight: 100;
+        }
+    }
+
+    .project-info {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .project-team {
+        margin-top: 90px;
+
+        h3 {
+            font-weight: 600;
+        }
+    }
+
+    .project-info-right {
+        background: #fff;
+        color: #000;
+        margin: 0 0 0 100px;
+        width: 300px;
+        padding: 50px;
+        font-size: 20px;
+        font-family: 'Permanent Marker', cursive;
+        min-height: 400px;
+        justify-content: center;
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+
+        p{
+            margin: 5px;
+        }
+    }
+}
+
+.project-main-info {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .project-domain {
+        align-self: flex-end;
+        margin-bottom: 20px;
+    }
+}
 
 
-video#bgvid {
-    position: fixed; right: 0; bottom: 0;
-    min-width: 100%; min-height: 100%;
-    width: auto; height: auto; z-index: -100;
-    background-size: cover;
+
+.project-team-container {
+    display: flex;
+    flex-direction: row;
+}
+
+a.project-team-link {
+    text-decoration: none;
+    color: #fff;
+    font-size: 20px;
+    font-style: oblique;
+    margin: 0 10px;
+    padding: 0px 10px;
+    border: solid 2px #fff;
+    //border-bottom: solid 2px #fff;
+    //border-left: solid 2px #fff;
+
+    i {
+        font-size: 15px;
+    }
+}
+
+.project-plus {
+    background: #f1f1f1f1;
+    display: flex;
+    justify-content: center;
+    align-self: center;
+    flex-wrap: wrap;
+
+    .fa-share {
+        margin-left: 20px;
+    }
+
+    a {
+        text-decoration: none;
+
+        &:hover {
+            text-decoration: none;
+            color: #262424;
+        }
+    }
+
+    .project-link {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: solid 4px #262424;
+        padding: 5px 100px;
+        color: #262424;
+        font-weight: bold;
+        margin: 20px;
+        font-size: 25px;
+        transition: 0.25s;
+
+        &:hover {
+            transition: 0.25s;
+            background: #262424;
+            color: #f1f1f1f1;
+        }
+    }
+
+    .project-stats {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: #262424;
+        height: 200px;
+        width: 90%;
+        font-style: italic;
+        font-size: 15px;
+    }
+
+    .main-container {
+        display: flex;
+        flex-direction: row;
+
+        .project-image {
+            margin: 30px;
+
+            img {
+                height: 400px;
+            }
+        }
+
+        .project-concept {
+            margin: 30px;
+            background: #262424;
+            width: 300px;
+            height: auto;
+            padding: 30px;
+            color: #fff;
+            line-break: auto;
+            font-style: italic;
+            font-size: 15px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media screen and (max-width: 992px) {
+    .index h1 {
+        font-size: 25px;
+        margin-top: 10px;
+    }
+    .project .project-info {
+        flex-direction: column;
+    }
+    .project-main-info {;
+        flex-direction: column;
+    }
+    .project .project-info-right {
+        margin: 0;
+        min-height: unset;
+        padding: 30px;
+
+        p {
+            margin: 2px;
+        }
+    }
+    .project {
+        .project-domain {
+            align-self: center;
+        }
+        h3 {
+            font-size: 25px;
+        }
+        h1 .project-since  {
+            font-size: 35px;
+        }
+        h1 {
+            font-size: 50px;
+        }
+        .project-team {
+            margin-top: 30px;
+        }
+    }
+    .project-team-container {
+        display: flex;
+        flex-direction: column;
+
+        .project-team-link{
+            margin: 5px;
+        }
+    }
 }

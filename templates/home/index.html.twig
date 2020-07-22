@@ -10,18 +10,83 @@
         </div>
         <div class="index-title">
             <div class="index-title-skill">
-                <img src="uploads/images/js-white.png" alt="">
-                <img src="uploads/images/python-white.png" alt="">
-                <img src="uploads/images/react-white.png" alt="">
-                <img src="uploads/images/sf-white.png" alt="">
+                {% for skill in homePage.skills %}
+                    <img src="uploads/images/{{ skill.image }}" alt="{{ skill.name }}">
+                {% endfor %}
             </div>
             <h1>
-                Full stack developpeur <br>
-                Living in savoie<br>
-                now available for you <span id="pipe">|</span>
+                {{ homePage.title|nl2br }}
+                <span id="pipe">|</span>
             </h1>
         </div>
-
+        <div class="scroll" data-href="#project-{{ projects[0].number }}">
+        </div>
     </div>
 
+
+
+
+{#    Start template for project    #}
+    {% for project in projects %}
+        <div id="project-{{ project.number }}" class="project">
+            <div class="project-number">{{ project.Number }}</div>
+
+            <div class="project-info">
+                <div class="project-main-info">
+                    <div class="project-domain">
+                        <h3>{{ project.domain }} -</h3>
+                    </div>
+                    <div class="title">
+                        <h1>
+                            {{ project.title }} <br>
+                            <span class="project-since">since {{ project.createdAt|date('yy') }}</span>
+                        </h1>
+                    </div>
+                </div>
+
+                <div class="project-info-right">
+                    {% for skill in project.skills %}
+                        <p>{{ skill.name }}</p>
+                    {% endfor %}
+                </div>
+
+            </div>
+            <div class="project-team">
+                <h3>Team</h3>
+                <div class="project-team-container">
+                {% for dev in project.teams %}
+                    <a href="{{ relative_path('http://' ~ dev.linkedin) }}" target="_blank" class="project-team-link"><i class="fas fa-terminal"></i>{{ dev.name }}</a>
+                {% endfor %}
+                </div>
+            </div>
+            <div class="scroll" data-href="#project-plus-{{ project.number }}">
+            </div>
+        </div>
+
+
+    <div id="project-plus-{{ project.number }}" class="project project-plus">
+        <div class="project-stats">
+            azdazdazdazdazdzdazd
+        </div>
+
+        <a href="{{ relative_path('http://' ~project.link) }}" target="_blank">
+            <div class="project-link">
+                Go to project<i class="fas fa-share"></i>
+            </div>
+        </a>
+
+        <div class="main-container">
+            <div class="project-image">
+                <img src="uploads/projects/{{ project.mainImage }}">
+            </div>
+            <div class="project-concept">
+                {{ project.concept }}
+            </div>
+        </div>
+    </div>
+
+    {#    end project template#}
+{% endfor %}
+
 {% endblock %}
+

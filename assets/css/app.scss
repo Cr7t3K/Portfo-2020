@@ -142,6 +142,10 @@ h1 {
         font-size: 20px;
         font-family: 'Permanent Marker', cursive;
         min-height: 400px;
+        justify-content: center;
+        align-items: center;
+        display: flex;
+        flex-direction: column;
 
         p{
             margin: 5px;
@@ -158,6 +162,33 @@ h1 {
         align-self: flex-end;
         margin-bottom: 20px;
     }
+}
+
+
+
+.project-team-container {
+    display: flex;
+    flex-direction: row;
+}
+
+a.project-team-link {
+    text-decoration: none;
+    color: #fff;
+    font-size: 20px;
+    font-style: oblique;
+    margin: 0 10px;
+    padding: 0px 10px;
+    border: solid 2px #fff;
+    //border-bottom: solid 2px #fff;
+    //border-left: solid 2px #fff;
+
+    i {
+        font-size: 15px;
+    }
+}
+
+.project-plus {
+    background: #f1f1f1f1;
 }
 
 @media screen and (max-width: 992px) {
@@ -197,5 +228,12 @@ h1 {
             margin-top: 30px;
         }
     }
+    .project-team-container {
+        display: flex;
+        flex-direction: column;
 
+        .project-team-link{
+            margin: 5px;
+        }
+    }
 }

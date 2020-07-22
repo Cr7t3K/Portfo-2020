@@ -10,18 +10,53 @@
         </div>
         <div class="index-title">
             <div class="index-title-skill">
-                <img src="uploads/images/js-white.png" alt="">
-                <img src="uploads/images/python-white.png" alt="">
-                <img src="uploads/images/react-white.png" alt="">
-                <img src="uploads/images/sf-white.png" alt="">
+                {% for skill in homePage.skills %}
+                    <img src="uploads/images/{{ skill.image }}" alt="{{ skill.name }}">
+                {% endfor %}
             </div>
             <h1>
-                Full stack developpeur <br>
-                Living in savoie<br>
-                now available for you <span id="pipe">|</span>
+                {{ homePage.title|nl2br }}
+                <span id="pipe">|</span>
             </h1>
         </div>
+        <div class="scroll" data-href="#project">
+        </div>
+    </div>
+    <div id="project" class="project">
+        <div class="project-number">01</div>
 
+        <div class="project-info">
+            <div class="project-main-info">
+                <div class="project-domain">
+                    <h3>Web Application -</h3>
+                </div>
+                <div class="title">
+                    <h1>
+                        side by side<br>
+                        <span class="project-since">since 2020</span>
+                    </h1>
+                </div>
+            </div>
+
+            <div class="project-info-right">
+                <p>PHP 7+</p>
+                <p>PHP 7+</p>
+                <p>Symfony</p>
+                <p>PHP 7+</p>
+                <p>PHP 7+</p>
+                <p>React</p>
+                <p>PHP 7+</p>
+                <p>PHP 7+</p>
+            </div>
+
+        </div>
+        <div class="project-team">
+            <h3>Team</h3>
+            <p>Github 1 - Github 2 - Github 3</p>
+        </div>
+        <div class="scroll" data-href="#project">
+        </div>
     </div>
 
 {% endblock %}
+

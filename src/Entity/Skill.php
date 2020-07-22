@@ -34,6 +34,11 @@ class Skill
      */
     private $pages;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $image;
+
     public function __construct()
     {
         $this->projects = new ArrayCollection();
@@ -107,6 +112,18 @@ class Skill
             $this->pages->removeElement($page);
             $page->removeSkill($this);
         }
+
+        return $this;
+    }
+
+    public function getImage(): ?string
+    {
+        return $this->image;
+    }
+
+    public function setImage(string $image): self
+    {
+        $this->image = $image;
 
         return $this;
     }

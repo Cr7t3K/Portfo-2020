@@ -2,7 +2,19 @@ body {
     background-color: #bababa;
     font-family: 'Source Sans Pro', sans-serif;
     overflow-x: hidden;
-    overflow-y: hidden;
+    //overflow-y: hidden;
+    margin: 0;
+}
+
+video#bgvid {
+    position: fixed; right: 0; bottom: 0;
+    min-width: 100%; min-height: 100%;
+    width: auto; height: auto; z-index: -100;
+    background-size: cover;
+}
+
+body::-webkit-scrollbar {
+    display: none;
 }
 
 h1 {
@@ -11,6 +23,7 @@ h1 {
     font-style: oblique;
     text-align: center;
 }
+
 .login {
     position: absolute;
     top: 20px;
@@ -50,11 +63,94 @@ h1 {
     }
 
 }
+.scroll {
+    height: 50px;
+    width: 1px;
+    background: #fff;
+    position: absolute;
+    bottom: 0;
+    &:before{
+        content: "Scroll and enjoy ";
+        width: max-content;
+        height: 20px;
+        color: #fff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        top: 30%;
+        left: 10px;
+    }
+}
 
+.project {
+    position: relative;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #262424;
+    height: 100vh;
+    width: 100%;
+    color: #fff;
 
-video#bgvid {
-    position: fixed; right: 0; bottom: 0;
-    min-width: 100%; min-height: 100%;
-    width: auto; height: auto; z-index: -100;
-    background-size: cover;
+    .project-number {
+        position: absolute;
+        top: 0;
+        font-size: 30px;
+        font-weight: 600;
+        font-style: oblique;
+        &:before {
+            content: "";
+            height: 15px;
+            width: 1px;
+            background: #fff;
+            display: flex;
+            margin: 0 50%;
+        }
+    }
+
+    h1 {
+        font-size: 70px;
+        .project-since {
+            font-size: 40px;
+            font-weight: 100;
+        }
+    }
+
+    .project-info {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .project-team {
+        display: none;
+    }
+
+    .project-info-right {
+        background: #fff;
+        color: #000;
+        margin: 0 0 0 100px;
+        width: 300px;
+        padding: 50px;
+        font-size: 20px;
+        font-family: 'Permanent Marker', cursive;
+        min-height: 400px;
+
+        p{
+            margin: 5px;
+        }
+    }
+}
+
+.project-main-info {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .project-domain {
+        align-self: flex-end;
+        margin-bottom: 20px;
+    }
 }

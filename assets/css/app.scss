@@ -84,6 +84,7 @@ h1 {
 }
 
 .project {
+    flex-direction: column;
     position: relative;
     text-align: center;
     display: flex;
@@ -125,7 +126,11 @@ h1 {
     }
 
     .project-team {
-        display: none;
+        margin-top: 90px;
+
+        h3 {
+            font-weight: 600;
+        }
     }
 
     .project-info-right {
@@ -153,4 +158,44 @@ h1 {
         align-self: flex-end;
         margin-bottom: 20px;
     }
+}
+
+@media screen and (max-width: 992px) {
+    .index h1 {
+        font-size: 25px;
+        margin-top: 10px;
+    }
+    .project .project-info {
+        flex-direction: column;
+    }
+    .project-main-info {;
+        flex-direction: column;
+    }
+    .project .project-info-right {
+        margin: 0;
+        min-height: unset;
+        padding: 30px;
+
+        p {
+            margin: 2px;
+        }
+    }
+    .project {
+        .project-domain {
+            align-self: center;
+        }
+        h3 {
+            font-size: 25px;
+        }
+        h1 .project-since  {
+            font-size: 35px;
+        }
+        h1 {
+            font-size: 50px;
+        }
+        .project-team {
+            margin-top: 30px;
+        }
+    }
+
 }

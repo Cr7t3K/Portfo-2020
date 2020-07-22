@@ -1,5 +1,5 @@
 body {
-    background-color: #bababa;
+    background-color: #262424;
     font-family: 'Source Sans Pro', sans-serif;
     overflow-x: hidden;
     //overflow-y: hidden;
@@ -189,7 +189,105 @@ a.project-team-link {
 
 .project-plus {
     background: #f1f1f1f1;
+    display: flex;
+    justify-content: center;
+    align-self: center;
+    flex-wrap: wrap;
+
+    .fa-share {
+        margin-left: 20px;
+    }
+
+    a {
+        text-decoration: none;
+
+        &:hover {
+            text-decoration: none;
+            color: #262424;
+        }
+    }
+
+    .project-link {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: solid 4px #262424;
+        padding: 5px 100px;
+        color: #262424;
+        font-weight: bold;
+        margin: 20px;
+        font-size: 25px;
+        transition: 0.25s;
+
+        &:hover {
+            transition: 0.25s;
+            background: #262424;
+            color: #f1f1f1f1;
+        }
+    }
+
+    .project-stats {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: #262424;
+        height: 200px;
+        width: 90%;
+        font-style: italic;
+        font-size: 15px;
+    }
+
+    .main-container {
+        display: flex;
+        flex-direction: row;
+
+        .project-image {
+            margin: 30px;
+
+            img {
+                height: 400px;
+            }
+        }
+
+        .project-concept {
+            margin: 30px;
+            background: #262424;
+            width: 300px;
+            height: auto;
+            padding: 30px;
+            color: #fff;
+            line-break: auto;
+            font-style: italic;
+            font-size: 15px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 @media screen and (max-width: 992px) {
     .index h1 {

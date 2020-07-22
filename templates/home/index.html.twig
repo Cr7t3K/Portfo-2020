@@ -62,8 +62,30 @@
             <div class="scroll" data-href="#project-plus-{{ project.number }}">
             </div>
         </div>
+
+
     <div id="project-plus-{{ project.number }}" class="project project-plus">
+        <div class="project-stats">
+            azdazdazdazdazdzdazd
+        </div>
+
+        <a href="{{ relative_path('http://' ~project.link) }}" target="_blank">
+            <div class="project-link">
+                Go to project<i class="fas fa-share"></i>
+            </div>
+        </a>
+
+        <div class="main-container">
+            <div class="project-image">
+                <img src="uploads/projects/{{ project.mainImage }}">
+            </div>
+            <div class="project-concept">
+                {{ project.concept }}
+            </div>
+        </div>
     </div>
+
+    {#    end project template#}
 {% endfor %}
 
 {% endblock %}

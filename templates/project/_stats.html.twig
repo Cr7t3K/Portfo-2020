@@ -18,4 +18,9 @@
     <div class="stats-commit">
         Nombre de commit : {{ total }}
     </div>
+    <div class="stats-commit">
+        {% for dev in stats  %}
+            <img src="{{ dev.author.avatar_url }}" class="avatar-dev">
+        {% endfor %}
+    </div>
 {% endif %}

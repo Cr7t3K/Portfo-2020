@@ -74,6 +74,11 @@ class Project
      */
     private $mainImage;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $nameRepo;
+
     public function __construct()
     {
         $this->teams = new ArrayCollection();
@@ -245,6 +250,18 @@ class Project
     public function setMainImage(string $mainImage): self
     {
         $this->mainImage = $mainImage;
+
+        return $this;
+    }
+
+    public function getNameRepo(): ?string
+    {
+        return $this->nameRepo;
+    }
+
+    public function setNameRepo(string $nameRepo): self
+    {
+        $this->nameRepo = $nameRepo;
 
         return $this;
     }

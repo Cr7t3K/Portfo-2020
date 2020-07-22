@@ -68,6 +68,9 @@ class ProjectController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $repo = explode("/", $project->getGithub());
+            $project->setNameRepo(end($repo));
+
             $this->getDoctrine()->getManager()->flush();
 
             return $this->redirectToRoute('project_index');
@@ -97,7 +100,6 @@ class ProjectController extends AbstractController
     {
         $stats = $githubManager->getStats($repo, $info);
         dump($stats);
-
         return $this->render('project/_stats.html.twig', [
             "stats" => $stats,
             "info" => $info,

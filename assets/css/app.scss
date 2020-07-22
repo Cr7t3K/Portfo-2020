@@ -80,6 +80,15 @@ h1 {
         position: absolute;
         top: 30%;
         left: 10px;
+        font-style: italic;
+    }
+}
+
+.scroll-black {
+    background: #262424;
+
+    &:before {
+        color: #262424;
     }
 }
 
@@ -91,7 +100,7 @@ h1 {
     justify-content: center;
     align-items: center;
     background: #262424;
-    height: 100vh;
+    min-height: 100vh;
     width: 100%;
     color: #fff;
 
@@ -282,8 +291,56 @@ a.project-team-link {
     margin: 10px;
 }
 
+img.avatar-dev {
+    height: 50px;
+    border-radius: 50%;
+    margin: 0 10px;
+}
 
+.contact-top {
+    display: flex;
+    margin: 30px;
+    justify-content: space-evenly;
+    align-items: initial;
+    width: 90%;
 
+    div {
+        margin: 0;
+    }
+
+    .contact-info {
+        background: #f1f2f3;
+        padding: 20px 100px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: #262424;
+        height: auto;
+        font-style: italic;
+    }
+}
+.contact-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: solid 4px #f1f2f3;
+    padding: 5px 100px;
+    color: #f1f2f3;
+    font-weight: bold;
+    margin: 50px 50px 0 50px;
+    font-size: 25px;
+    transition: 0.25s;
+
+    &:hover {
+        transition: 0.25s;
+        background: #f1f2f3;
+        color: #262424;
+    }
+
+    .fa-paper-plane {
+        margin-left: 20px;
+    }
+}
 
 
 
@@ -355,9 +412,13 @@ a.project-team-link {
     }
 
     .project-plus .project-link {
-        padding: 10px 50px;
+        padding: 2px 50px;
         width: 100%;
         margin: 10px 0;
+        font-size: 20px;
+        i {
+            font-size: 15px;
+        }
     }
 
     a.link-project {
@@ -371,6 +432,7 @@ a.project-team-link {
             margin: 10px;
             width: 90%;
             align-self: center;
+            padding: 15px;
         }
 
         .project-image {

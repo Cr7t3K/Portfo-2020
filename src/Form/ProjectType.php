@@ -20,6 +20,7 @@ class ProjectType extends AbstractType
             ->add('domain')
             ->add('link')
             ->add('github')
+            ->add('main_image')
             ->add('createdAt', DateType::class, [
                 "label" => "Date de création ",
                 'format' => 'dd MM yyyy',

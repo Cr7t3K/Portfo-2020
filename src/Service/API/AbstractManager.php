@@ -12,14 +12,17 @@ class AbstractManager
 
     protected $method;
 
-    protected $key;
+    protected $pass;
 
-    public function __construct(string $url, string $key, string $method)
+    protected $id;
+
+    public function __construct(string $url, string $pass, string $method, string $id)
     {
         $this->client = HttpClient::create();
         $this->url = $url;
         $this->method = $method;
-        $this->key = $_SERVER[$key];
+        $this->pass = $_SERVER[$pass];
+        $this->id = $_SERVER[$id];
     }
 
 }

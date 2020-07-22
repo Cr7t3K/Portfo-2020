@@ -6,7 +6,7 @@
     </video>
     <div class="index">
         <div class="login">
-            <a href="#login"><i class="fas fa-terminal"></i></a>
+            <a href="{{ path('app_login') }}"><i class="fas fa-terminal"></i></a>
         </div>
         <div class="index-title">
             <div class="index-title-skill">
@@ -66,10 +66,17 @@
 
     <div id="project-plus-{{ project.number }}" class="project project-plus">
         <div class="project-stats">
-            azdazdazdazdazdzdazd
+            {{ render(controller(
+                'App\\Controller\\ProjectController::showStats',
+                {repo : "SideBySide", info : 'languages'}
+            )) }}
+            {{ render(controller(
+                'App\\Controller\\ProjectController::showStats',
+                {repo : "SideBySide", info : 'stats/contributors'}
+            )) }}
         </div>
 
-        <a href="{{ relative_path('http://' ~project.link) }}" target="_blank">
+        <a href="{{ relative_path('http://' ~project.link) }}" target="_blank" class="link-project">
             <div class="project-link">
                 Go to project<i class="fas fa-share"></i>
             </div>
@@ -89,4 +96,9 @@
 {% endfor %}
 
 {% endblock %}
+
+{% block javascripts %}
+    {{ encore_entry_script_tags('pipe') }}
+{% endblock %}
+
 

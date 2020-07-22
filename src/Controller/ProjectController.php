@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Project;
 use App\Form\ProjectType;
 use App\Repository\ProjectRepository;
+use App\Service\API\GithubManager;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -90,5 +91,17 @@ class ProjectController extends AbstractController
         }
 
         return $this->redirectToRoute('project_index');
+    }
+
+    public function showStats(string $repo, ?string $info, GithubManager $githubManager) :Response
+    {
+        $stats = $githubManager->getStats($repo, $info);
+        dump($stats);
+
+        return $this->render('project/_stats.html.twig', [
+            "stats" => $stats,
+            "info" => $info,
+        ]);
+
     }
 }

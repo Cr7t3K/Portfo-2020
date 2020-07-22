@@ -7,24 +7,36 @@ class GithubManager extends AbstractManager
 {
     protected $client;
 
-    protected $url = "http://api.betaseries.com/";
+    protected $url = "https://api.github.com/";
 
-    protected $method = "shows/list?key=";
+    protected $method = "repos/Cr7t3K/";
 
-    protected $key = "APP_GITHUB_KEY";
+    protected $pass = "APP_GITHUB_PASS";
+
+    protected $id = "APP_GITHUB_ID";
 
     public function __construct()
     {
-        parent::__construct($this->url, $this->key, $this->method);
+        parent::__construct($this->url, $this->pass, $this->method, $this->id);
     }
 
-    public function sortUpcoming(int $number) :Array
+    public function getStats(string $repo, ?string $info = null) :Array
     {
-        $response = $this->client->request(
-            'GET', $this->url . $this->method . $this->key . "&v=3.0&order=popularity&recent=true&limit=" . $number
-        );
-        $datas = $response->toArray();
+        if (isset($info)) {
+            $response = $this->client->request(
+                'GET', $this->url . $this->method . $repo . '/' . $info, [
+                'auth_basic' => [$this->id, $this->pass],
 
-        return $datas['shows'];
+            ]);
+        } else {
+            $response = $this->client->request(
+                'GET', $this->url . $this->method . $repo, [
+                    'auth_basic' => [$this->id, $this->pass],
+
+            ]);
+        }
+
+
+        return $response->toArray();
     }
 }

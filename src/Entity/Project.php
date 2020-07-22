@@ -69,6 +69,11 @@ class Project
      */
     private $skills;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $mainImage;
+
     public function __construct()
     {
         $this->teams = new ArrayCollection();
@@ -228,6 +233,18 @@ class Project
             $this->skills->removeElement($skill);
             $skill->removeProject($this);
         }
+
+        return $this;
+    }
+
+    public function getMainImage(): ?string
+    {
+        return $this->mainImage;
+    }
+
+    public function setMainImage(string $mainImage): self
+    {
+        $this->mainImage = $mainImage;
 
         return $this;
     }

@@ -90,7 +90,7 @@
                     {{ project.concept }}
                 </div>
             </div>
-            {% if projects[(project.number+1)|format_number] is not defined %}
+            {% if projects[(project.number)|format_number] is not defined %}
                 <div class="scroll scroll-black" data-href="#contact">
                 </div>
             {% else %}

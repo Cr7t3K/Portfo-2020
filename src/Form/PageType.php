@@ -20,7 +20,6 @@ class PageType extends AbstractType
                 "label" => "Title :",
                 'attr' => ['placeholder' => 'Veuillez décrire votre profil professionnel'],
             ])
-            ->add('name')
             ->add('skills', EntityType::class, [
                 'class' => Skill::class,
                 'choice_label' => 'name',

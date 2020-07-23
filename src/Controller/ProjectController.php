@@ -6,6 +6,7 @@ use App\Entity\Project;
 use App\Form\ProjectType;
 use App\Repository\ProjectRepository;
 use App\Service\API\GithubManager;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -18,6 +19,7 @@ class ProjectController extends AbstractController
 {
     /**
      * @Route("/", name="project_index", methods={"GET"})
+     * @IsGranted("ROLE_ADMIN")
      */
     public function index(ProjectRepository $projectRepository): Response
     {
@@ -28,6 +30,7 @@ class ProjectController extends AbstractController
 
     /**
      * @Route("/new", name="project_new", methods={"GET","POST"})
+     * @IsGranted("ROLE_ADMIN")
      */
     public function new(Request $request): Response
     {
@@ -51,6 +54,7 @@ class ProjectController extends AbstractController
 
     /**
      * @Route("/{id}", name="project_show", methods={"GET"})
+     * @IsGranted("ROLE_ADMIN")
      */
     public function show(Project $project): Response
     {
@@ -61,6 +65,7 @@ class ProjectController extends AbstractController
 
     /**
      * @Route("/{id}/edit", name="project_edit", methods={"GET","POST"})
+     * @IsGranted("ROLE_ADMIN")
      */
     public function edit(Request $request, Project $project): Response
     {
@@ -73,7 +78,7 @@ class ProjectController extends AbstractController
 
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('project_index');
+            return $this->redirectToRoute('admin_project_edit', ['id' => $project->getId()]);
         }
 
         return $this->render('project/edit.html.twig', [
@@ -84,6 +89,7 @@ class ProjectController extends AbstractController
 
     /**
      * @Route("/{id}", name="project_delete", methods={"DELETE"})
+     * @IsGranted("ROLE_ADMIN")
      */
     public function delete(Request $request, Project $project): Response
     {
@@ -99,7 +105,7 @@ class ProjectController extends AbstractController
     public function showStats(string $repo, ?string $info, GithubManager $githubManager) :Response
     {
         $stats = $githubManager->getStats($repo, $info);
-        dump($stats);
+
         return $this->render('project/_stats.html.twig', [
             "stats" => $stats,
             "info" => $info,

@@ -1,5 +1,10 @@
+$white: #f1f2f3;
+$black: #262424;
+$green: #279444;
+@import "admin";
+
 body {
-    background-color: #262424;
+    background-color: $white;
     font-family: 'Source Sans Pro', sans-serif;
     overflow-x: hidden;
     //overflow-y: hidden;
@@ -30,10 +35,10 @@ h1 {
     right: 20px;
     font-size: 30px;
     a {
-        color: #fff;
+        color: $white;
         text-decoration: none;
         &:hover{
-            color: #fff;
+            color: $white;
             text-decoration: none;
         }
     }
@@ -48,7 +53,7 @@ h1 {
 
     h1 {
         font-size: 40px;
-        color: #fff;
+        color: $white;
     }
 
     .index-title-skill {
@@ -66,14 +71,14 @@ h1 {
 .scroll {
     height: 50px;
     width: 1px;
-    background: #fff;
+    background: $white;
     position: absolute;
     bottom: 0;
     &:before{
         content: "Scroll and enjoy ";
         width: max-content;
         height: 20px;
-        color: #fff;
+        color: $white;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -85,10 +90,10 @@ h1 {
 }
 
 .scroll-black {
-    background: #262424;
+    background: $black;
 
     &:before {
-        color: #262424;
+        color: $black;
     }
 }
 
@@ -99,10 +104,10 @@ h1 {
     display: flex;
     justify-content: center;
     align-items: center;
-    background: #262424;
+    background: $black;
     min-height: 100vh;
     width: 100%;
-    color: #fff;
+    color: $white;
 
     .project-number {
         position: absolute;
@@ -114,7 +119,7 @@ h1 {
             content: "";
             height: 15px;
             width: 1px;
-            background: #fff;
+            background: $white;
             display: flex;
             margin: 0 50%;
         }
@@ -143,7 +148,7 @@ h1 {
     }
 
     .project-info-right {
-        background: #fff;
+        background: $white;
         color: #000;
         margin: 0 0 0 100px;
         width: 300px;
@@ -182,14 +187,14 @@ h1 {
 
 a.project-team-link {
     text-decoration: none;
-    color: #fff;
+    color: $white;
     font-size: 20px;
     font-style: oblique;
     margin: 0 10px;
     padding: 0px 10px;
-    border: solid 2px #fff;
-    //border-bottom: solid 2px #fff;
-    //border-left: solid 2px #fff;
+    border: solid 2px $white;
+    //border-bottom: solid 2px $white;
+    //border-left: solid 2px $white;
 
     i {
         font-size: 15px;
@@ -197,7 +202,7 @@ a.project-team-link {
 }
 
 .project-plus {
-    background: #f1f1f1f1;
+    background: $white;
     display: flex;
     justify-content: center;
     align-self: center;
@@ -211,7 +216,7 @@ a.project-team-link {
 
         &:hover {
             text-decoration: none;
-            color: #262424;
+            color: $black;
         }
     }
 
@@ -219,9 +224,9 @@ a.project-team-link {
         display: flex;
         justify-content: center;
         align-items: center;
-        border: solid 4px #262424;
+        border: solid 4px $black;
         padding: 5px 100px;
-        color: #262424;
+        color: $black;
         font-weight: bold;
         margin: 20px;
         font-size: 25px;
@@ -229,8 +234,8 @@ a.project-team-link {
 
         &:hover {
             transition: 0.25s;
-            background: #262424;
-            color: #f1f1f1f1;
+            background: $black;
+            color: $white;
         }
     }
 
@@ -239,7 +244,7 @@ a.project-team-link {
         justify-content: center;
         flex-direction: column;
         align-items: center;
-        background: #262424;
+        background: $black;
         height: auto;
         width: 90%;
         font-style: italic;
@@ -261,11 +266,11 @@ a.project-team-link {
 
         .project-concept {
             margin: 30px;
-            background: #262424;
+            background: $black;
             width: 300px;
             height: auto;
             padding: 30px;
-            color: #fff;
+            color: $white;
             line-break: auto;
             font-style: italic;
             font-size: 15px;
@@ -309,12 +314,12 @@ img.avatar-dev {
     }
 
     .contact-info {
-        background: #f1f2f3;
+        background: $white;
         padding: 20px 100px;
         display: flex;
         justify-content: center;
         align-items: center;
-        color: #262424;
+        color: $black;
         height: auto;
         font-style: italic;
     }
@@ -323,9 +328,9 @@ img.avatar-dev {
     display: flex;
     justify-content: center;
     align-items: center;
-    border: solid 4px #f1f2f3;
+    border: solid 4px $white;
     padding: 5px 100px;
-    color: #f1f2f3;
+    color: $white;
     font-weight: bold;
     margin: 50px 50px 0 50px;
     font-size: 25px;
@@ -333,8 +338,8 @@ img.avatar-dev {
 
     &:hover {
         transition: 0.25s;
-        background: #f1f2f3;
-        color: #262424;
+        background: $white;
+        color: $black;
     }
 
     .fa-paper-plane {

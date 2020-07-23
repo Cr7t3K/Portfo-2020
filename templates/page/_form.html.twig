@@ -1,4 +1,10 @@
-{{ form_start(form) }}
-    {{ form_widget(form) }}
-    <button class="btn">{{ button_label|default('Save') }}</button>
+{{ form_start(form, {'attr': {'class': 'form-project', 'id': 'form'}}) }}
+    <div class="form-input">
+        {{ form_row(form.title, {'attr': {'class': 'input-project-form'}}) }}
+    </div>
+    <div class="project-skill">
+        {{ form_row(form.skills, {'attr': {'class': 'input-project-form'}}) }}
+    </div>
+
+    <button class="btn button-save">{{ button_label|default('Save') }}</button>
 {{ form_end(form) }}

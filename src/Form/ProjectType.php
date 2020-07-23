@@ -22,13 +22,12 @@ class ProjectType extends AbstractType
             ->add('github')
             ->add('main_image')
             ->add('createdAt', DateType::class, [
-                "label" => "Date de création ",
+                "label" => "Created Year ",
                 'format' => 'dd MM yyyy',
                 "placeholder"  => ['year' => 'Année'],
                 'years' => range(2020, 1920),
             ])
             ->add('concept')
-            ->add('stats')
             ->add('number')
             ->add('teams', EntityType::class, [
                 'class' => Team::class,

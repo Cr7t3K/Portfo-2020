@@ -1,0 +1,255 @@
+.form-sign_in {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100%;
+
+  h1 {
+    color: $black;
+  }
+
+  .form-input {
+    width: 300px;
+    padding: 5px;
+    margin: 20px;
+    background: $black;
+    border: none;
+    font-style: italic;
+    color: $white;
+  }
+
+  .button-sign-in {
+    background: $green;
+    border: none;
+    padding: 10px;
+    width: 150px;
+    font-weight: bold;
+    color: $white;
+    border-radius: 3px;
+    transition: 0.25s;
+
+    &:hover {
+      box-shadow: 5px 5px 0 #2d944378;
+      transition: 0.25s;
+    }
+  }
+
+}
+
+.admin-container-dashboard {
+  height: auto;
+  width: 100%;
+  background: $white;
+  display: flex;
+
+  .admin-left-side {
+    width: 20%;
+    height: 100%;
+    background: #262424;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    position: fixed;
+
+    .top-left-side {
+      background: $green;
+      height: 60px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-weight: 700;
+      font-style: oblique;
+      padding: 10px;
+      font-size: 30px;
+    }
+
+    .admin-button {
+      color: $white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 70px;
+      font-weight: 700;
+      font-style: oblique;
+      padding: 10px;
+      font-size: 20px;
+    }
+
+    .button-hover:hover {
+        background: #2d2b2b;
+    }
+
+    .button-logout {
+      background: $white;
+      color: #262424;
+      width: 60%;
+      margin: 10px auto 10px auto;
+      height: auto;
+      transition: 0.25s;
+
+
+      &:hover {
+        transition: 0.25s;
+        box-shadow: 0 5px 0 #d21b33;
+      }
+    }
+
+    .button-new-project {
+      width: 60%;
+      margin: 10px auto 10px auto;
+      height: auto;
+      border: solid $white 3px;
+    }
+  }
+
+  .admin-right-side {
+    width: 80%;
+    height: 100%;
+    margin-left: auto;
+  }
+}
+
+select#project_createdAt_month,
+select#project_createdAt_day {
+  display: none;
+}
+
+
+
+
+
+
+.container-bottom-left {
+  position: absolute;
+  bottom: 10px;
+  width: 100%;
+}
+
+.button-active {
+  background: $white;
+  color: $black !important;
+}
+
+.form-project {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 50px 0;
+
+  div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .project-skill div,
+  .admin-project-team div {
+    flex-direction: initial;
+    flex-wrap: wrap;
+  }
+
+  .form-input input, .form-input textarea {
+    background: #F4F4F4;
+    border: none;
+    box-shadow: 0 0 10px #00000025;
+    width: 700px;
+    padding: 10px;
+    border-radius: 3px;
+  }
+  .form-input textarea {
+    height: 150px;
+  }
+  .form-input label {
+      font-weight: bold;
+      font-size: 30px;
+      margin-right: auto;
+  }
+
+  .form-data {
+    display: flex;
+    width: 700px;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 10px 0;
+
+    input {
+      width: auto;
+    }
+  }
+
+  select#project_createdAt_year {
+    background: $white;
+    padding: 10px;
+    box-shadow: 0 0 10px #00000025;
+    border: none;
+    border-radius: 3px;
+    width: 200px;
+  }
+}
+
+.admin-project-team,
+.project-skill {
+  width: 700px;
+  align-items: flex-start !important;
+
+  input {
+    margin: 20px;
+  }
+
+  div:first-child {
+    flex-direction: column !important;
+  }
+
+  label.required {
+    font-weight: bold;
+    font-size: 30px;
+    margin-right: auto;
+  }
+
+  .input-project-form label {
+    font-style: italic;
+  }
+}
+
+.button-save {
+  margin: 50px;
+  background: $black;
+  color: $white;
+  padding: 5px;
+  width: 200px;
+  font-weight: bold;
+  font-size: 25px;
+  border: solid 3px $black;
+  transition: 0.25s;
+
+  &:hover {
+    background: $white;
+    color: $black;
+    border: solid 3px $black;
+    transition: 0.25s;
+  }
+}
+
+.button-black {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: none;
+  color: $black;
+  border: solid 3px $black;
+  font-style: oblique;
+  padding: 0px 30px;
+  font-weight: 600;
+  transition: 0.25s;
+
+  &:hover {
+    background: $black;
+    color: $white;
+    transition: 0.25s;
+  }
+}

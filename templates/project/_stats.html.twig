@@ -1,0 +1,26 @@
+{% if info == "languages" %}
+    {% set total = 0 %}
+    {% for stat in stats  %}
+            {% set total = total + stat %}
+    {% endfor %}
+
+    <div class="stats-languages">
+        {% for name,stat in stats  %}
+            <p>{{ name }}:  {{ (stat*100/total)|round }}%</p>
+        {% endfor %}
+    </div>
+{% endif %}
+{% if info == 'stats/contributors' %}
+    {% set total = 0 %}
+    {% for stat in stats  %}
+        {% set total = total + stat.total %}
+    {% endfor %}
+    <div class="stats-commit">
+        Nombre de commit : {{ total }}
+    </div>
+    <div class="stats-commit">
+        {% for dev in stats  %}
+            <img src="{{ dev.author.avatar_url }}" class="avatar-dev">
+        {% endfor %}
+    </div>
+{% endif %}

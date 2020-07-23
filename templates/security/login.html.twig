@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Log in!{% endblock %}
+
+{% block body %}
+<form method="post" class="form-sign_in">
+    {% if error %}
+        <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+    {% endif %}
+    <button class="button-black" type="button"
+            onclick="window.location.href = '{{ path('home') }}';">
+        Back
+    </button>
+
+    <h1 class="sign-in">Admin Panel</h1>
+    <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-input" required autofocus>
+    <input type="password" name="password" id="inputPassword" class="form-input" required>
+
+    <input type="hidden" name="_csrf_token"
+           value="{{ csrf_token('authenticate') }}"
+    >
+
+
+    <button class="button-sign-in" type="submit">
+        Sign in
+    </button>
+</form>
+{% endblock %}

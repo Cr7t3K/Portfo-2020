@@ -1,8 +1,25 @@
+$white: #f1f2f3;
+$black: #262424;
+$green: #279444;
+@import "admin";
+
 body {
-    background-color: #bababa;
+    background-color: $white;
     font-family: 'Source Sans Pro', sans-serif;
     overflow-x: hidden;
-    overflow-y: hidden;
+    //overflow-y: hidden;
+    margin: 0;
+}
+
+video#bgvid {
+    position: fixed; right: 0; bottom: 0;
+    min-width: 100%; min-height: 100%;
+    width: auto; height: auto; z-index: -100;
+    background-size: cover;
+}
+
+body::-webkit-scrollbar {
+    display: none;
 }
 
 h1 {
@@ -11,16 +28,17 @@ h1 {
     font-style: oblique;
     text-align: center;
 }
+
 .login {
     position: absolute;
     top: 20px;
     right: 20px;
     font-size: 30px;
     a {
-        color: #fff;
+        color: $white;
         text-decoration: none;
         &:hover{
-            color: #fff;
+            color: $white;
             text-decoration: none;
         }
     }
@@ -35,7 +53,7 @@ h1 {
 
     h1 {
         font-size: 40px;
-        color: #fff;
+        color: $white;
     }
 
     .index-title-skill {
@@ -50,11 +68,411 @@ h1 {
     }
 
 }
+.scroll {
+    height: 50px;
+    width: 1px;
+    background: $white;
+    position: absolute;
+    bottom: 0;
+    &:before{
+        content: "Scroll and enjoy ";
+        width: max-content;
+        height: 20px;
+        color: $white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        top: 30%;
+        left: 10px;
+        font-style: italic;
+    }
+}
+
+.scroll-black {
+    background: $black;
+
+    &:before {
+        color: $black;
+    }
+}
+
+.project {
+    flex-direction: column;
+    position: relative;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: $black;
+    min-height: 100vh;
+    width: 100%;
+    color: $white;
+
+    .project-number {
+        position: absolute;
+        top: 0;
+        font-size: 30px;
+        font-weight: 600;
+        font-style: oblique;
+        &:before {
+            content: "";
+            height: 15px;
+            width: 1px;
+            background: $white;
+            display: flex;
+            margin: 0 50%;
+        }
+    }
+
+    h1 {
+        font-size: 70px;
+        .project-since {
+            font-size: 40px;
+            font-weight: 100;
+        }
+    }
+
+    .project-info {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .project-team {
+        margin-top: 90px;
+
+        h3 {
+            font-weight: 600;
+        }
+    }
+
+    .project-info-right {
+        background: $white;
+        color: #000;
+        margin: 0 0 0 100px;
+        width: 300px;
+        padding: 50px;
+        font-size: 20px;
+        font-family: 'Permanent Marker', cursive;
+        min-height: 400px;
+        justify-content: center;
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+
+        p{
+            margin: 5px;
+        }
+    }
+}
+
+.project-main-info {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .project-domain {
+        align-self: flex-end;
+        margin-bottom: 20px;
+    }
+}
 
 
-video#bgvid {
-    position: fixed; right: 0; bottom: 0;
-    min-width: 100%; min-height: 100%;
-    width: auto; height: auto; z-index: -100;
-    background-size: cover;
+
+.project-team-container {
+    display: flex;
+    flex-direction: row;
+}
+
+a.project-team-link {
+    text-decoration: none;
+    color: $white;
+    font-size: 20px;
+    font-style: oblique;
+    margin: 0 10px;
+    padding: 0px 10px;
+    border: solid 2px $white;
+    //border-bottom: solid 2px $white;
+    //border-left: solid 2px $white;
+
+    i {
+        font-size: 15px;
+    }
+}
+
+.project-plus {
+    background: $white;
+    display: flex;
+    justify-content: center;
+    align-self: center;
+
+    .fa-share {
+        margin-left: 20px;
+    }
+
+    a {
+        text-decoration: none;
+
+        &:hover {
+            text-decoration: none;
+            color: $black;
+        }
+    }
+
+    .project-link {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: solid 4px $black;
+        padding: 5px 100px;
+        color: $black;
+        font-weight: bold;
+        margin: 20px;
+        font-size: 25px;
+        transition: 0.25s;
+
+        &:hover {
+            transition: 0.25s;
+            background: $black;
+            color: $white;
+        }
+    }
+
+    .project-stats {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+        background: $black;
+        height: auto;
+        width: 90%;
+        font-style: italic;
+        font-size: 15px;
+        padding: 10px;
+    }
+
+    .main-container {
+        display: flex;
+        flex-direction: row;
+
+        .project-image {
+            margin: 30px;
+
+            img {
+                width: 800px;
+            }
+        }
+
+        .project-concept {
+            margin: 30px;
+            background: $black;
+            width: 300px;
+            height: auto;
+            padding: 30px;
+            color: $white;
+            line-break: auto;
+            font-style: italic;
+            font-size: 15px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    }
+}
+
+.stats-languages {
+    display: flex;
+    background: #2c2c2c;
+    padding: 10px;
+    margin: 10px;
+
+    p {
+        margin: 5px 20px;
+    }
+}
+
+.stats-commit {
+    margin: 10px;
+}
+
+img.avatar-dev {
+    height: 50px;
+    border-radius: 50%;
+    margin: 0 10px;
+}
+
+.contact-top {
+    display: flex;
+    margin: 30px;
+    justify-content: space-evenly;
+    align-items: initial;
+    width: 90%;
+
+    div {
+        margin: 0;
+    }
+
+    .contact-info {
+        background: $white;
+        padding: 20px 100px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: $black;
+        height: auto;
+        font-style: italic;
+    }
+}
+.contact-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: solid 4px $white;
+    padding: 5px 100px;
+    color: $white;
+    font-weight: bold;
+    margin: 50px 50px 0 50px;
+    font-size: 25px;
+    transition: 0.25s;
+
+    &:hover {
+        transition: 0.25s;
+        background: $white;
+        color: $black;
+    }
+
+    .fa-paper-plane {
+        margin-left: 20px;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media screen and (max-width: 992px) {
+    .index h1 {
+        font-size: 25px;
+        margin-top: 10px;
+    }
+    .project .project-info {
+        flex-direction: column;
+    }
+    .project-main-info {;
+        flex-direction: column;
+    }
+    .project .project-info-right {
+        margin: 0;
+        min-height: unset;
+        padding: 30px;
+
+        p {
+            margin: 2px;
+        }
+    }
+    .project {
+        .project-domain {
+            align-self: center;
+        }
+        h3 {
+            font-size: 25px;
+        }
+        h1 .project-since  {
+            font-size: 35px;
+        }
+        h1 {
+            font-size: 50px;
+        }
+        .project-team {
+            margin-top: 30px;
+        }
+    }
+    .project-team-container {
+        display: flex;
+        flex-direction: column;
+
+        .project-team-link{
+            margin: 5px;
+        }
+    }
+
+    .stats-languages {
+        flex-direction: column;
+        p {
+            margin: 5px 20px;
+        }
+    }
+    .stats-commit img {
+            margin: 5px 10px;
+    }
+
+    .project-plus .project-link {
+        padding: 2px 50px;
+        width: 100%;
+        margin: 10px 0;
+        font-size: 20px;
+        i {
+            font-size: 15px;
+        }
+    }
+
+    a.link-project {
+        width: 90%;
+    }
+
+    .project-plus .main-container {
+        flex-direction: column;
+        margin-bottom: 50px;
+
+        .project-concept {
+            margin: 10px;
+            width: 90%;
+            align-self: center;
+            padding: 15px;
+        }
+
+        .project-image {
+            width: 100%;
+            margin: 0;
+
+            img {
+                width: 90%;
+            }
+        }
+    }
+
+    .contact-top {
+        flex-direction: column;
+        align-items: center;
+
+        .contact-info {
+            margin-top: 20px;
+        }
+
+        iframe {
+            width: 90%;
+        }
+    }
+    .contact-button {
+        padding: 10px;
+        margin: 0;
+        width: 90%;
+    }
+    .project-stats {
+        margin-top: 10px;
+    }
+
 }

@@ -1,0 +1,87 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Dash Board{% endblock %}
+
+{% block body %}
+<div class="admin-container-dashboard">
+    <div class="admin-left-side">
+        <div class="top-left-side">Dash Board</div>
+        <div class="admin-button button-hover"
+             onclick="window.location.href = '#';"
+        >
+            My Profile
+        </div>
+        <div class="admin-button button-hover"
+             onclick="window.location.href = '#';"
+        >
+            Analytics
+        </div>
+        <div class="admin-button
+            {% if currentPage is not null %}
+                {% if currentPage.id == 1 %} button-active
+                {% else %} button-hover
+                {% endif %}
+            {% else %} button-hover
+            {% endif %}"
+             onclick="window.location.href = '{{ path('admin_page_edit', {'page': 1}) }}';"
+        >
+            Home Page
+        </div>
+        {% for project in projects  %}
+
+            <div class="admin-button
+                    {% if currentProject is not null %}
+                        {% if currentProject.id == project.id %} button-active
+                        {% else %} button-hover
+                        {% endif %}
+                    {% else %} button-hover
+                    {% endif %}"
+                 onclick="window.location.href = '{{ path('admin_project_edit', {'project': project.id}) }}';"
+            >
+                Project {{ project.number }}
+            </div>
+        {% endfor %}
+        <div class="admin-button button-hover"
+             onclick="window.location.href = '{{ path('app_logout') }}';"
+        >
+            Manage Team
+        </div>
+        <div class="admin-button button-hover"
+             onclick="window.location.href = '{{ path('app_logout') }}';"
+        >
+            Manage Skill
+        </div>
+
+
+        <div class="container-bottom-left">
+            <div class="admin-button button-new-project"
+                 onclick="window.location.href = '{{ path('admin_project_new') }}';"
+            >
+                Add Project
+            </div>
+            <div class="admin-button button-logout" type="button"
+                 onclick="window.location.href = '{{ path('app_logout') }}';"
+            >
+                Logout
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="admin-right-side">
+        <button class="button-black" type="button"
+                onclick="window.location.href = '{{ path('home') }}';">
+            Back Home
+        </button>
+
+        {% if currentProject is not null or newProject is not null %}
+            {% include 'project/_form.html.twig' %}
+        {% endif %}
+        {% if currentPage is not null %}
+            {% include 'page/_form.html.twig' %}
+        {% endif %}
+
+    </div>
+</div>
+{% endblock %}

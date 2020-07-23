@@ -1,0 +1,23 @@
+{{ form_start(form, {'attr': {'class': 'form-project', 'id': 'form'}}) }}
+    <div class="form-input">
+        {{ form_row(form.number, {'attr': {'class': 'input-project-form'}}) }}
+        {{ form_row(form.title, {'attr': {'class': 'input-project-form'}}) }}
+        {{ form_row(form.domain, {'attr': {'class': 'input-project-form'}}) }}
+        {{ form_row(form.link, {'attr': {'class': 'input-project-form'}}) }}
+        {{ form_row(form.github, {'attr': {'class': 'input-project-form'}}) }}
+        {{ form_row(form.concept, {'attr': {'class': 'input-project-form'}}) }}
+        <div class="form-data">
+            {{ form_row(form.main_image, {'attr': {'class': 'input-project-form'}}) }}
+            {{ form_row(form.createdAt, {'attr': {'class': 'input-project-form'}}) }}
+        </div>
+    </div>
+
+    <div class="admin-project-team">
+        {{ form_row(form.teams, {'attr': {'class': 'input-project-form'}}) }}
+    </div>
+    <div class="project-skill">
+        {{ form_row(form.skills, {'attr': {'class': 'input-project-form'}}) }}
+    </div>
+
+    <button class="btn button-save">{{ button_label|default('Save') }}</button>
+{{ form_end(form) }}

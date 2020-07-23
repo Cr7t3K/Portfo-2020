@@ -8,6 +8,6 @@ avec le role ["ROLE_ADMIN"] et un password en Argon
 
 
 
-**NE PAS OUBLIER de remplir les variable d'environement GITHUB
+**NE PAS OUBLIER de remplir les variable d'environement GITHUB**
 
-ATTENTION, mettre un lien Github valide pour les projets, sinon API ne fait pas le lien**
+**ATTENTION, mettre un lien Github valide pour les projets, sinon API ne fait pas le lien**

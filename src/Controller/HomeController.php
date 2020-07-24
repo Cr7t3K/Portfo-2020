@@ -20,7 +20,6 @@ class HomeController extends AbstractController
     {
         $homePage = $pageRepository->findOneBy(["name" => "index"]);
         $projects = $projectRepository->findAll();
-        dump($projects);
 
         return $this->render("home/index.html.twig", [
             "homePage" => $homePage,
@@ -42,6 +41,7 @@ class HomeController extends AbstractController
             $entityManager->persist($message);
             $entityManager->flush();
 
+            $this->addFlash('success', 'Message has been sent, you will be contacted as soon as possible');
             return $this->redirectToRoute('home');
         }
 

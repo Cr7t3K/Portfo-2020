@@ -10,6 +10,7 @@ use App\Form\PageType;
 use App\Form\ProjectType;
 use App\Form\SkillType;
 use App\Form\TeamType;
+use App\Repository\MessageRepository;
 use App\Repository\ProjectRepository;
 use App\Repository\SkillRepository;
 use App\Repository\TeamRepository;
@@ -88,6 +89,7 @@ class AdminController extends AbstractController
             }
         }
 
+        dump($formCreate);
         return $this->render('admin/index.html.twig', [
             'projects' => $projectRepository->findAll(),
             'currentProject' => $currentProject,
@@ -110,7 +112,6 @@ class AdminController extends AbstractController
         ?Skill $skill
     ) {
         $currentRoute = $request->attributes->get('_route');
-        dump($currentRoute);
 
         $currentSkill = ($skill)? $skill:null;
         $formCreate = $newSkill = null;
@@ -200,6 +201,22 @@ class AdminController extends AbstractController
             'teams' => $teamRepository->findAll(),
             'currentTeam' => $currentTeam,
             'formTeam' => $formCreate,
+        ]);
+
+    }
+
+    /**
+     * @Route("/dashboard/messages", name="messages")
+     */
+    public function messages(
+        MessageRepository $messageRepository,
+        ProjectRepository $projectRepository,
+        ?Request $request
+    ) {
+
+        return $this->render('admin/index.html.twig', [
+            'projects' => $projectRepository->findAll(),
+            'messages' => $messageRepository->findAll()
         ]);
 
     }

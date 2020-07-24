@@ -53,6 +53,12 @@
         >
             Manage Skill
         </div>
+        <div class="admin-button
+             {% if messages is defined and messages is not null %} button-active {% else %} button-hover {% endif %}"
+             onclick="window.location.href = '{{ path('admin_messages') }}';"
+        >
+            Message
+        </div>
 
 
         <div class="container-bottom-left">
@@ -103,6 +109,10 @@
                     {% include 'team/index.html.twig' %}
                 </div>
             {% endif %}
+        {% endif %}
+
+        {% if messages is defined and messages is not null %}
+            {% include 'admin/message.html.twig' %}
         {% endif %}
     </div>
 </div>

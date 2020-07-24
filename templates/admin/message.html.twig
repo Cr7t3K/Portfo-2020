@@ -1,0 +1,27 @@
+<h1>Skill index</h1>
+{% for message in messages  %}
+
+    <div class="container-message">
+        <h2>Message #{{ message.id }}</h2>
+        <div class="message-name">
+            <h3>Name</h3>
+            <div class="subject">
+                {{ message.Name }}
+            </div>
+        </div>
+        <div class="message-email">
+            <h3>Email</h3>
+            <div class="subject">
+                {{ message.Email }}
+            </div>
+        </div>
+        <div class="message-subject">
+            <h3>Subject</h3>
+            <div class="subject">
+            {{ message.Subject }}
+            </div>
+        </div>
+    </div>
+{% endfor %}
+
+

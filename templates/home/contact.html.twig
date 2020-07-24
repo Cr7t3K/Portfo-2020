@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<div class="contact">
+    <button class="button-black" type="button"
+            onclick="window.location.href = '{{ path('home') }}';">
+        Back Home
+    </button>
+    <h1>Message</h1>
+    {{ form_start(form, {'attr': {'class': 'form-project'}}) }}
+    <div class="form-input">
+        {{ form_row(form.Name, {'attr': {'class': 'input-project-form'}}) }}
+        {{ form_row(form.Email, {'attr': {'class': 'input-project-form'}}) }}
+        {{ form_row(form.Subject, {'attr': {'class': 'input-project-form'}}) }}
+    </div>
+    <button class="btn button-save">{{ button_label|default('Send') }}</button>
+    {{ form_end(form) }}
+</div>
+
+
+{% endblock %}

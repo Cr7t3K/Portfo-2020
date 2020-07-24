@@ -18,7 +18,7 @@ class PageType extends AbstractType
         $builder
             ->add('title', TextareaType::class, [
                 "label" => "Title :",
-                'attr' => ['placeholder' => 'Veuillez décrire votre profil professionnel'],
+                'attr' => ['placeholder' => 'Titre de la page d\'aceuil'],
             ])
             ->add('skills', EntityType::class, [
                 'class' => Skill::class,

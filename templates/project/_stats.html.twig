@@ -20,7 +20,9 @@
     </div>
     <div class="stats-commit">
         {% for dev in stats  %}
-            <img src="{{ dev.author.avatar_url }}" class="avatar-dev">
+            <a href="{{ dev.author.html_url }}" target="_blank">
+                <img src="{{ dev.author.avatar_url }}" class="avatar-dev">
+            </a>
         {% endfor %}
     </div>
 {% endif %}

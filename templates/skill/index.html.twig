@@ -1,35 +1,18 @@
-{% extends 'base.html.twig' %}
+<h1>Skill index</h1>
+{% for skill in skills  %}
+    <div class="container-skill">
+        <img src="/uploads/images/{{ skill.image }}" width="50px" alt="{{ skill.name }}" class="skill-image">
+        <h3 class="skill-name">{{ skill.name }}</h3>
+        <div class="skill-action">
+            <div class="skill-edit"
+                 onclick="window.location.href = '{{ path('admin_skill_edit', {'skill': skill.id}) }}';"
+            >
+                Edit
+            </div>
+            {{ include('skill/_delete_form.html.twig') }}
+        </div>
+    </div>
+{% endfor %}
 
-{% block title %}Skill index{% endblock %}
+<div class="new-skill" onclick="window.location.href = '{{ path('admin_skill_new') }}';">Add Skill</div>
 
-{% block body %}
-    <h1>Skill index</h1>
-
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for skill in skills %}
-            <tr>
-                <td>{{ skill.id }}</td>
-                <td>{{ skill.name }}</td>
-                <td>
-                    <a href="{{ path('skill_show', {'id': skill.id}) }}">show</a>
-                    <a href="{{ path('skill_edit', {'id': skill.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="3">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-
-    <a href="{{ path('skill_new') }}">Create new</a>
-{% endblock %}

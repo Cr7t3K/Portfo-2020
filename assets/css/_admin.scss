@@ -101,6 +101,12 @@
       margin: 10px auto 10px auto;
       height: auto;
       border: solid $white 3px;
+      transition: 0.25s;
+
+      &:hover {
+        box-shadow: 0 -5px 0 $green;
+        transition: 0.25s;
+      }
     }
   }
 
@@ -252,4 +258,155 @@ select#project_createdAt_day {
     color: $white;
     transition: 0.25s;
   }
+}
+
+.container-skill {
+  display: flex;
+  align-items: center;
+  background: $black;
+  padding: 10px;
+  color: $white;
+  font-style: italic;
+  width: 60%;
+  margin: 20px auto;
+
+  .skill-edit {
+    background: $white;
+    color: $black;
+    width: 100px;
+    padding: 5px;
+    text-align: center;
+    font-weight: 700;
+    margin: 0 20px;
+    border: solid 3px #f1f2f3;
+    transition: 0.25s;
+
+    &:hover {
+      background: #262424;
+      color: #f1f2f3;
+      transition: 0.25s;
+    }
+  }
+
+  .skill-delete {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #f72929;
+    padding: 5px;
+    color: #000;
+    font-weight: bold;
+    font-size: 20px;
+    height: 35px;
+    width: 35px;
+    border: none;
+  }
+
+  .skill-action {
+    margin-left: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .skill-image,
+  .skill-name {
+    margin: 0 20px;
+  }
+}
+.skill-index {
+  margin-top: 50px;
+
+  h1{
+    margin-bottom: 50px;
+    font-size: 60px;
+  }
+}
+
+.new-skill {
+  border: solid 3px $black;
+  color: $black;
+  font-weight: 700;
+  width: 200px;
+  padding: 10px;
+  margin: 30px auto;
+  text-align: center;
+  font-size: 20px;
+  transition: 0.25s;
+
+  &:hover {
+    background: $black;
+    color: $white;
+    transition: 0.25s;
+  }
+}
+
+
+.container-checkbox {
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  cursor: pointer;
+  font-size: 22px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  margin: 10px 10px;
+}
+
+/* Hide the browser's default checkbox */
+.container-checkbox input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+/* Create a custom checkbox */
+.checkmark {
+  position: absolute;
+  top: 30%;
+  left: 0;
+  height: 15px;
+  width: 15px;
+  background-color: #262424;
+  border-radius: 3px;
+}
+
+/* On mouse-over, add a grey background color */
+.container-checkbox:hover input ~ .checkmark {
+  background-color: #797676;
+}
+
+/* When the checkbox is checked, add a blue background */
+.container-checkbox input:checked ~ .checkmark {
+  background-color: $black;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the checkmark when checked */
+.container-checkbox input:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* Style the checkmark/indicator */
+.container-checkbox .checkmark:after {
+  left: 5px;
+  top: 2px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
 }

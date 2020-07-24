@@ -13,11 +13,29 @@
     </div>
 
     <div class="admin-project-team">
-        {{ form_row(form.teams, {'attr': {'class': 'input-project-form'}}) }}
+
+        <label class="required">Team</label>
+        <div class="all-skills">
+            {% for dev in form.teams  %}
+                <label class="container-checkbox">{{ dev.vars.label }}
+                    <input type="checkbox" id="{{ dev.vars.id }}" name="{{ dev.vars.full_name }}" value="{{ dev.vars.value }}" {% if dev.vars.checked == true %} checked {% endif %}>
+                    <span class="checkmark"></span>
+                </label>
+            {% endfor %}
+        </div>
     </div>
     <div class="project-skill">
-        {{ form_row(form.skills, {'attr': {'class': 'input-project-form'}}) }}
+
+        <label class="required">Skills</label>
+        <div class="all-skills">
+            {% for skill in form.skills  %}
+                <label class="container-checkbox">{{ skill.vars.label }}
+                    <input type="checkbox" id="{{ skill.vars.id }}" name="{{ skill.vars.full_name }}" value="{{ skill.vars.value }}" {% if skill.vars.checked == true %} checked {% endif %}>
+                    <span class="checkmark"></span>
+                </label>
+            {% endfor %}
+        </div>
     </div>
 
     <button class="btn button-save">{{ button_label|default('Save') }}</button>
-{{ form_end(form) }}
+{{ form_end(form, {'render_rest': false}) }}

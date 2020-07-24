@@ -36,7 +36,6 @@ class GithubManager extends AbstractManager
             ]);
         }
 
-
         return $response->toArray();
     }
 }

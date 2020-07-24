@@ -4,9 +4,15 @@ namespace App\Controller;
 
 use App\Entity\Page;
 use App\Entity\Project;
+use App\Entity\Skill;
+use App\Entity\Team;
 use App\Form\PageType;
 use App\Form\ProjectType;
+use App\Form\SkillType;
+use App\Form\TeamType;
 use App\Repository\ProjectRepository;
+use App\Repository\SkillRepository;
+use App\Repository\TeamRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -89,6 +95,113 @@ class AdminController extends AbstractController
             'currentPage' => $currentPage,
             'form' => $formCreate,
         ]);
+    }
+
+
+    /**
+     * @Route("/dashboard/skills", name="skills")
+     * @Route("/dashboard/skills/new", name="skill_new")
+     * @Route("/dashboard/skills/{skill}", name="skill_edit")
+     */
+    public function skills(
+        SkillRepository $skillRepository,
+        ProjectRepository $projectRepository,
+        ?Request $request,
+        ?Skill $skill
+    ) {
+        $currentRoute = $request->attributes->get('_route');
+        dump($currentRoute);
+
+        $currentSkill = ($skill)? $skill:null;
+        $formCreate = $newSkill = null;
+
+        if ($currentRoute == "admin_skill_new") {
+            $skill = new Skill();
+            $form = $this->createForm(SkillType::class, $skill);
+            $form->handleRequest($request);
+            $formCreate = $form->createView();
+
+            if ($form->isSubmitted() && $form->isValid()) {
+                $entityManager = $this->getDoctrine()->getManager();
+                $entityManager->persist($skill);
+                $entityManager->flush();
+
+                return $this->redirectToRoute('admin_skills');
+            }
+        }
+
+        if ($skill) {
+            $form = $this->createForm(SkillType::class, $skill);
+            $form->handleRequest($request);
+            $formCreate = $form->createView();
+
+            if ($form->isSubmitted() && $form->isValid()) {
+                $this->getDoctrine()->getManager()->flush();
+
+                return $this->redirectToRoute('admin_skills');
+            }
+        }
+
+        return $this->render('admin/index.html.twig', [
+            'projects' => $projectRepository->findAll(),
+            'skills' => $skillRepository->findAll(),
+            'currentSkill' => $currentSkill,
+            'formSkill' => $formCreate,
+        ]);
+
+    }
+
+    /**
+     * @Route("/dashboard/teams", name="teams")
+     * @Route("/dashboard/teams/new", name="team_new")
+     * @Route("/dashboard/teams/{team}", name="team_edit")
+     */
+    public function teams(
+        TeamRepository $teamRepository,
+        ProjectRepository $projectRepository,
+        ?Request $request,
+        ?Team $team
+    ) {
+        $currentRoute = $request->attributes->get('_route');
+        dump($currentRoute);
+
+        $currentTeam = ($team)? $team:null;
+        $formCreate = $newTeam = null;
+
+        if ($currentRoute == "admin_team_new") {
+            $team = new Team();
+            $form = $this->createForm(TeamType::class, $team);
+            $form->handleRequest($request);
+            $formCreate = $form->createView();
+
+            if ($form->isSubmitted() && $form->isValid()) {
+                $entityManager = $this->getDoctrine()->getManager();
+                $entityManager->persist($team);
+                $entityManager->flush();
+
+                return $this->redirectToRoute('admin_teams');
+            }
+        }
+
+        if ($team) {
+            $form = $this->createForm(TeamType::class, $team);
+            $form->handleRequest($request);
+            $formCreate = $form->createView();
+
+            if ($form->isSubmitted() && $form->isValid()) {
+                $this->getDoctrine()->getManager()->flush();
+
+                return $this->redirectToRoute('admin_teams');
+            }
+        }
+
+        return $this->render('admin/index.html.twig', [
+            'projects' => $projectRepository->findAll(),
+            'teams' => $teamRepository->findAll(),
+            'currentTeam' => $currentTeam,
+            'formTeam' => $formCreate,
+        ]);
+
     }
 
 }

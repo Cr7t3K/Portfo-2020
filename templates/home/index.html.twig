@@ -1,9 +1,14 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <video autoplay loop poster="uploads/images/js.png" id="bgvid">
-        <source src="uploads/videos/code.mp4" type="video/mp4">
+    <video autoplay loop poster="uploads/videos/code3.png" id="bgvid">
+        <source src="uploads/videos/code3.mp4" type="video/mp4">
     </video>
+    <div class="audio-container">
+        <audio crossorigin autoplay="autoplay" loop="loop">
+            <source src="uploads/audio/audio.mp3" type="audio/mpeg">
+        </audio>
+    </div>
     <div class="index">
         <div class="login">
             <a href="{{ path('app_login') }}"><i class="fas fa-terminal"></i></a>
@@ -125,6 +130,11 @@
 {% endblock %}
 
 {% block javascripts %}
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            new GreenAudioPlayer('.audio-container');
+        });
+    </script>
     {{ encore_entry_script_tags('pipe') }}
 {% endblock %}
 

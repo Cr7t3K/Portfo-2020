@@ -17,7 +17,7 @@
             Analytics
         </div>
         <div class="admin-button
-            {% if currentPage is not null %}
+            {% if currentPage is defined and currentPage is not null %}
                 {% if currentPage.id == 1 %} button-active
                 {% else %} button-hover
                 {% endif %}
@@ -30,7 +30,7 @@
         {% for project in projects  %}
 
             <div class="admin-button
-                    {% if currentProject is not null %}
+                    {% if currentProject is defined and currentProject is not null %}
                         {% if currentProject.id == project.id %} button-active
                         {% else %} button-hover
                         {% endif %}
@@ -41,13 +41,15 @@
                 Project {{ project.number }}
             </div>
         {% endfor %}
-        <div class="admin-button button-hover"
-             onclick="window.location.href = '{{ path('app_logout') }}';"
+        <div class="admin-button
+            {% if teams is defined and teams is not null %} button-active {% else %} button-hover {% endif %}"
+             onclick="window.location.href = '{{ path('admin_teams') }}';"
         >
             Manage Team
         </div>
-        <div class="admin-button button-hover"
-             onclick="window.location.href = '{{ path('app_logout') }}';"
+        <div class="admin-button
+             {% if skills is defined and skills is not null %} button-active {% else %} button-hover {% endif %}"
+             onclick="window.location.href = '{{ path('admin_skills') }}';"
         >
             Manage Skill
         </div>
@@ -74,14 +76,34 @@
                 onclick="window.location.href = '{{ path('home') }}';">
             Back Home
         </button>
-
-        {% if currentProject is not null or newProject is not null %}
-            {% include 'project/_form.html.twig' %}
+        {% if currentProject is defined or newProject is defined %}
+            {% if currentProject is not null or newProject is not null %}
+                {% include 'project/_form.html.twig' %}
+            {% endif %}
         {% endif %}
-        {% if currentPage is not null %}
+        {% if currentPage is defined and currentPage is not null %}
             {% include 'page/_form.html.twig' %}
         {% endif %}
 
+        {% if skills is defined and skills is not null %}
+            {% if formSkill is not null %}
+                {% include 'skill/_form.html.twig' %}
+            {% else %}
+                <div class="skill-index">
+                    {% include 'skill/index.html.twig' %}
+                </div>
+            {% endif %}
+        {% endif %}
+
+        {% if teams is defined and teams is not null %}
+            {% if formTeam is not null %}
+                {% include 'team/_form.html.twig' %}
+            {% else %}
+                <div class="skill-index">
+                    {% include 'team/index.html.twig' %}
+                </div>
+            {% endif %}
+        {% endif %}
     </div>
 </div>
 {% endblock %}

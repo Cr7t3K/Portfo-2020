@@ -16,8 +16,24 @@ class PageType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('title', TextareaType::class, [
-                "label" => "Title :",
+            ->add('mainSentence', null, [
+                "label" => "Main sentence :",
+                'attr' => ['placeholder' => 'Titre de la page d\'aceuil'],
+            ])
+            ->add('sentence1', null, [
+                "label" => "Second sentence :",
+                'attr' => ['placeholder' => 'Titre de la page d\'aceuil'],
+            ])
+            ->add('sentence2', null, [
+                "label" => "Third Sentence :",
+                'attr' => ['placeholder' => 'Titre de la page d\'aceuil'],
+            ])
+            ->add('sentence3', null, [
+                "label" => "Fourth sentence :",
+                'attr' => ['placeholder' => 'Titre de la page d\'aceuil'],
+            ])
+            ->add('sentence4', null, [
+                "label" => "Fifth sentence :",
                 'attr' => ['placeholder' => 'Titre de la page d\'aceuil'],
             ])
             ->add('skills', EntityType::class, [

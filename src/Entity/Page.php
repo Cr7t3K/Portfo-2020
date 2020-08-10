@@ -20,11 +20,6 @@ class Page
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $title;
-
-    /**
      * @ORM\Column(type="string", length=100)
      */
     private $name;
@@ -34,6 +29,31 @@ class Page
      */
     private $skills;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $mainSentence;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $sentence1;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $sentence2;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $sentence3;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $sentence4;
+
     public function __construct()
     {
         $this->skills = new ArrayCollection();
@@ -42,18 +62,6 @@ class Page
     public function getId(): ?int
     {
         return $this->id;
-    }
-
-    public function getTitle(): ?string
-    {
-        return $this->title;
-    }
-
-    public function setTitle(string $title): self
-    {
-        $this->title = $title;
-
-        return $this;
     }
 
     public function getName(): ?string
@@ -90,6 +98,66 @@ class Page
         if ($this->skills->contains($skill)) {
             $this->skills->removeElement($skill);
         }
+
+        return $this;
+    }
+
+    public function getSentence1(): ?string
+    {
+        return $this->sentence1;
+    }
+
+    public function setSentence1(?string $sentence1): self
+    {
+        $this->sentence1 = $sentence1;
+
+        return $this;
+    }
+
+    public function getSentence2(): ?string
+    {
+        return $this->sentence2;
+    }
+
+    public function setSentence2(?string $sentence2): self
+    {
+        $this->sentence2 = $sentence2;
+
+        return $this;
+    }
+
+    public function getSentence3(): ?string
+    {
+        return $this->sentence3;
+    }
+
+    public function setSentence3(?string $sentence3): self
+    {
+        $this->sentence3 = $sentence3;
+
+        return $this;
+    }
+
+    public function getSentence4(): ?string
+    {
+        return $this->sentence4;
+    }
+
+    public function setSentence4(?string $sentence4): self
+    {
+        $this->sentence4 = $sentence4;
+
+        return $this;
+    }
+
+    public function getMainSentence(): ?string
+    {
+        return $this->mainSentence;
+    }
+
+    public function setMainSentence(string $mainSentence): self
+    {
+        $this->mainSentence = $mainSentence;
 
         return $this;
     }

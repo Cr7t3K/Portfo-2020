@@ -27,8 +27,14 @@
                 {% endfor %}
             </div>
             <h1>
-                {{ homePage.title|nl2br }}
-                <span id="pipe">|</span>
+                <span id="mainSentence" data-value="{{ homePage.mainSentence }}"></span>
+                <span id="sentence1" data-value="{{ homePage.sentence1 }}"></span>
+                <span id="sentence2" data-value="{{ homePage.sentence2 }}"></span>
+                <span id="sentence3" data-value="{{ homePage.sentence3 }}"></span>
+                <span id="sentence4" data-value="{{ homePage.sentence4 }}"></span>
+
+                <span id="innerHtml"></span>
+                <span id="pipe">_</span>
             </h1>
         </div>
         <div class="scroll" data-href="#project-0{{ (projects[0].number)|format_number }}">

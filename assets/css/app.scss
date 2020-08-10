@@ -11,9 +11,9 @@ body {
     margin: 0;
 }
 
-//.sf-toolbar {
-//    display: none !important;
-//}
+.sf-toolbar {
+    display: none !important;
+}
 
 .container-message {
     width: 700px;
@@ -98,6 +98,10 @@ video#bgvid {
     z-index: 2;
     box-shadow: 0 0 5px #00000045;
 
+    .volume {
+        display: block;
+    }
+
     .controls {
         display: none;
     }
@@ -135,7 +139,7 @@ h1 {
 
 .index {
     justify-content: center;
-    align-items: center;
+    //align-items: center;
     display: flex;
     width: 100%;
     height: 100vh;
@@ -150,6 +154,7 @@ h1 {
         justify-content: space-around;
         align-items: center;
         padding: 0 15%;
+        margin: 10px;
 
         img {
             height: 30px;
@@ -435,7 +440,12 @@ img.avatar-dev {
         margin-left: 20px;
     }
 }
-
+.index-title{
+    padding: 10px;
+    width: 500px;
+    margin-top: 40vh;
+    height: fit-content;
+}
 
 
 
@@ -453,6 +463,20 @@ img.avatar-dev {
 
 
 @media screen and (max-width: 992px) {
+    .audio-container {
+        width: 30px;
+        height: 25px;
+        min-width: initial;
+        padding: initial;
+
+        .volume {
+            display: none;
+        }
+
+        .holder {
+            margin: auto;
+        }
+    }
     .success {
         width: 250px;
         padding: 5px;
@@ -479,6 +503,7 @@ img.avatar-dev {
     .project {
         .project-domain {
             align-self: center;
+            margin-bottom: 0px;
         }
         h3 {
             font-size: 25px;
@@ -552,6 +577,7 @@ img.avatar-dev {
         align-items: center;
 
         .contact-info {
+            width: 90%;
             margin-top: 20px;
         }
 

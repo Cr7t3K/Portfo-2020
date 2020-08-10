@@ -1,6 +1,10 @@
 {{ form_start(form, {'attr': {'class': 'form-project', 'id': 'form'}}) }}
     <div class="form-input">
-        {{ form_row(form.title, {'attr': {'class': 'input-project-form'}}) }}
+        {{ form_row(form.mainSentence, {'attr': {'class': 'input-project-form'}}) }}
+        {{ form_row(form.sentence1, {'attr': {'class': 'input-project-form'}}) }}
+        {{ form_row(form.sentence2, {'attr': {'class': 'input-project-form'}}) }}
+        {{ form_row(form.sentence3, {'attr': {'class': 'input-project-form'}}) }}
+        {{ form_row(form.sentence4, {'attr': {'class': 'input-project-form'}}) }}
     </div>
     <div class="project-skill">
         <label class="required">Skills</label>

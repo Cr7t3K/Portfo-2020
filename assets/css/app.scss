@@ -11,9 +11,9 @@ body {
     margin: 0;
 }
 
-.sf-toolbar {
-    display: none !important;
-}
+//.sf-toolbar {
+//    display: none !important;
+//}
 
 .container-message {
     width: 700px;
@@ -349,9 +349,11 @@ a.project-team-link {
     .main-container {
         display: flex;
         flex-direction: row;
+        max-height: 500px;
 
         .project-image {
             margin: 30px;
+            overflow: hidden;
 
             img {
                 width: 800px;

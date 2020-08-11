@@ -81,15 +81,13 @@ class AdminController extends AbstractController
             if ($form->isSubmitted() && $form->isValid()) {
                 $repo = explode("/", $project->getGithub());
                 $project->setNameRepo(end($repo));
-
+                dump($project);
                 $this->getDoctrine()->getManager()->flush();
 
-                //return new Response("Ok");
                 return $this->redirectToRoute('admin_project_edit', ['project' => $project->getId()]);
             }
         }
 
-        dump($formCreate);
         return $this->render('admin/index.html.twig', [
             'projects' => $projectRepository->findAll(),
             'currentProject' => $currentProject,

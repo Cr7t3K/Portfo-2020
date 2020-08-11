@@ -6,9 +6,14 @@ use App\Repository\ProjectRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\File;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
+use Vich\UploaderBundle\Naming\NamerInterface;
+use DateTimeImmutable;
 
 /**
  * @ORM\Entity(repositoryClass=ProjectRepository::class)
+ * @Vich\Uploadable
  */
 class Project
 {
@@ -75,9 +80,21 @@ class Project
     private $mainImage;
 
     /**
+     * @Vich\UploadableField(mapping="projects", fileNameProperty="mainImage")
+     * @var File
+     */
+    private $mainImageFile;
+
+    /**
      * @ORM\Column(type="string", length=255)
      */
     private $nameRepo;
+
+    /**
+     * @ORM\Column(type="datetime", nullable=true)
+     * @var \DateTimeInterface|null
+     */
+    private $updatedAt;
 
     public function __construct()
     {
@@ -247,7 +264,7 @@ class Project
         return $this->mainImage;
     }
 
-    public function setMainImage(string $mainImage): self
+    public function setMainImage($mainImage): self
     {
         $this->mainImage = $mainImage;
 
@@ -262,6 +279,31 @@ class Project
     public function setNameRepo(string $nameRepo): self
     {
         $this->nameRepo = $nameRepo;
+
+        return $this;
+    }
+
+    public function setMainImageFile(File $image = null)
+    {
+        $this->mainImageFile = $image;
+        if ($image) {
+            $this->updatedAt = new \DateTime('now');
+        }
+    }
+
+    public function getMainImageFile(): ?File
+    {
+        return $this->mainImageFile;
+    }
+
+    public function getUpdatedAt(): ?\DateTimeInterface
+    {
+        return $this->updatedAt;
+    }
+
+    public function setUpdatedAt(?\DateTimeInterface $updatedAt): self
+    {
+        $this->updatedAt = $updatedAt;
 
         return $this;
     }

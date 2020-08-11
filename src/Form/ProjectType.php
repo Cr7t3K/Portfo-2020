@@ -10,6 +10,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Vich\UploaderBundle\Form\Type\VichFileType;
 
 class ProjectType extends AbstractType
 {
@@ -20,7 +21,11 @@ class ProjectType extends AbstractType
             ->add('domain')
             ->add('link')
             ->add('github')
-            ->add('main_image')
+            ->add('mainImageFile', VichFileType::class, [
+                'required' => true,
+                'allow_delete'  => false, // not mandatory, default is true
+                'download_uri' => false, // not mandatory, default is true
+            ])
             ->add('createdAt', DateType::class, [
                 "label" => "Created Year ",
                 'format' => 'dd MM yyyy',

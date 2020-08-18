@@ -6,10 +6,12 @@ use App\Entity\Page;
 use App\Entity\Project;
 use App\Entity\Skill;
 use App\Entity\Team;
+use App\Entity\User;
 use App\Form\PageType;
 use App\Form\ProjectType;
 use App\Form\SkillType;
 use App\Form\TeamType;
+use App\Form\UserType;
 use App\Repository\MessageRepository;
 use App\Repository\ProjectRepository;
 use App\Repository\SkillRepository;
@@ -18,6 +20,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 /**
  * Class AdminController
@@ -30,17 +33,23 @@ class AdminController extends AbstractController
      * @Route("/dashboard/project/new", name="project_new")
      * @Route("/dashboard/project/{project}", name="project_edit")
      * @Route("/dashboard/page/{page}", name="page_edit")
+     * @Route("/dashboard/user/{user}", name="user_edit")
      */
     public function index(
         ProjectRepository $projectRepository,
         ?Project $project,
         ?Request $request,
-        ?Page $page
+        ?Page $page,
+        ?User $user,
+        ?UserPasswordEncoderInterface $passwordEncoder
     ) {
         $currentProject = ($project)? $project: null;
         $currentPage = ($page)? $page: null;
+        $currentUser = ($user)? $user: null;
         $formCreate = $newProject = null;
         $currentRoute = $request->attributes->get('_route');
+
+        //dump($user);
 
         if ($currentRoute == "admin_project_new") {
             $project = new Project();
@@ -81,16 +90,61 @@ class AdminController extends AbstractController
             if ($form->isSubmitted() && $form->isValid()) {
                 $repo = explode("/", $project->getGithub());
                 $project->setNameRepo(end($repo));
-                dump($project);
+                //dump($project);
                 $this->getDoctrine()->getManager()->flush();
 
                 return $this->redirectToRoute('admin_project_edit', ['project' => $project->getId()]);
             }
         }
 
+        if ($user) {
+            //dump('test');
+            $userEmail = $user->getEmail();
+            $form = $this->createForm(UserType::class, $user, array('allow_extra_fields' => true));
+            $form->handleRequest($request);
+            $formCreate = $form->createView();
+
+            if ($form->isSubmitted() && $form->isValid()) {
+                $checkPass = null;
+
+                $old_pwd = trim($request->request->get('user')['old_password']);
+                $new_pwd = trim($request->request->get('user')['new_password']);
+                $new_pwd_confirm = trim($request->request->get('user')['new_password_confirm']);
+                $email = $request->request->get('user')['email'];
+
+                if ($email !== $userEmail) {
+                    dump($user->getEmail());
+                    $this->getDoctrine()->getManager()->flush();
+                    $this->addFlash("success", "Email change success !");
+                }
+
+                if (!empty($new_pwd) && !empty($new_pwd_confirm) && !empty($old_pwd)) {
+                    $checkPass = $passwordEncoder->isPasswordValid($user, $old_pwd);
+                    if ($new_pwd === $new_pwd_confirm) { // Verif correspondance deux nouveaux pass
+
+                        if ($checkPass === true) {  // Verif de l'ancien pass
+                            $new_pwd_encoded = $passwordEncoder->encodePassword($user, $new_pwd_confirm);
+                            $user->setPassword($new_pwd_encoded);
+                            $this->getDoctrine()->getManager()->flush();
+                            $this->addFlash("success", "Password change success !");
+                        } else {
+                            $this->addFlash("warning", "Wrong password !");
+                        }
+                    } else {
+                        $this->addFlash("warning", "New password d'oesnt match !");
+                    }
+                }
+
+
+
+                return $this->redirectToRoute('admin_user_edit', ['user' => $user->getId()]);
+            }
+        }
+
         return $this->render('admin/index.html.twig', [
             'projects' => $projectRepository->findAll(),
             'currentProject' => $currentProject,
+            'currentUser' => $currentUser,
             'newProject' => $newProject,
             'currentPage' => $currentPage,
             'form' => $formCreate,

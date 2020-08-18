@@ -410,3 +410,34 @@ select#project_createdAt_day {
   -ms-transform: rotate(45deg);
   transform: rotate(45deg);
 }
+
+.h1-user {
+  margin-top: 50px;
+  display: flex;
+  margin-right: auto;
+  font-weight: 900;
+}
+
+.flash-warning {
+  background: #ff000066;
+  width: 100%;
+  margin: 20px;
+  padding: 10px;
+  border-radius: 5px;
+  border: solid 1px #7b0000;
+  color: #6e4646;
+  font-style: italic;
+  font-size: 20px;
+}
+
+.flash-success {
+  background: #33ff0066;
+  width: 100%;
+  margin: 20px;
+  padding: 10px;
+  border-radius: 5px;
+  border: solid 1px #1e7b00;
+  color: #4c6e46;
+  font-style: italic;
+  font-size: 20px;
+}

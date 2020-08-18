@@ -1,0 +1,29 @@
+{{ form_start(form, {'attr': {'class': 'form-project', 'id': 'form'}}) }}
+<div class="form-input">
+    {{ form_row(form.email, {'attr': {'class': 'input-project-form'}}) }}
+    <h1 class="h1-user">Change Password</h1>
+    <div>
+        <label for="old_password" class="required">Old Password</label>
+        <input type="text" id="old_password" name="user[old_password]" class="input-project-form" >
+    </div>
+    <div>
+        <label for="new_password" class="required">New Password</label>
+        <input type="text" id="new_password" name="user[new_password]" class="input-project-form" >
+    </div>
+    <div>
+        <label for="new_password_confirm" class="required">Confirm new Password</label>
+        <input type="text" id="new_password_confirm" name="user[new_password_confirm]" class="input-project-form" >
+    </div>
+    {% for label, messages in app.flashes %}
+        {% for message in messages %}
+            <div class="flash-{{ label }}">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endfor %}
+</div>
+
+<input type="hidden" id="{{ form.children['_token'].vars.id }}" name="{{ form.children['_token'].vars.full_name }}" value="{{ form.children['_token'].vars.value }}">
+
+<button class="btn button-save">{{ button_label|default('Save') }}</button>
+{{ form_end(form, {'render_rest': false}) }}

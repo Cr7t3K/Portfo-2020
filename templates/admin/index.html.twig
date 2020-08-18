@@ -7,7 +7,7 @@
     <div class="admin-left-side">
         <div class="top-left-side">Dash Board</div>
         <div class="admin-button button-hover"
-             onclick="window.location.href = '#';"
+             onclick="window.location.href = '{{ path('admin_user_edit', {'user': app.user.id}) }}';"
         >
             My Profile
         </div>
@@ -109,6 +109,9 @@
                     {% include 'team/index.html.twig' %}
                 </div>
             {% endif %}
+        {% endif %}
+        {% if currentUser is defined and currentUser is not null %}
+                {% include 'user/_form.html.twig' %}
         {% endif %}
 
         {% if messages is defined and messages is not null %}

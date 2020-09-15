@@ -73,7 +73,7 @@
                 <h3>Team</h3>
                 <div class="project-team-container">
                 {% for dev in project.teams %}
-                    <a href="{{ relative_path('http://' ~ dev.linkedin) }}" target="_blank" class="project-team-link"><i class="fas fa-terminal"></i>{{ dev.name }}</a>
+                    <a href="{{ relative_path(dev.linkedin) }}" target="_blank" class="project-team-link"><i class="fas fa-terminal"></i>{{ dev.name }}</a>
                 {% endfor %}
                 </div>
             </div>

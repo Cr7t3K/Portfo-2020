@@ -414,10 +414,63 @@ img.avatar-dev {
         padding: 20px 100px;
         display: flex;
         justify-content: center;
-        align-items: center;
+        align-items: start;
         color: $black;
         height: auto;
         font-style: italic;
+        flex-direction: column;
+
+        div{
+            align-items: center;
+            display: flex;
+            margin: 10px;
+
+            a {
+                color: $black;
+                text-decoration: none;
+                position: relative;
+                z-index: 2;
+            }
+
+            h5 {
+                font-style: italic;
+                font-weight: 300;
+                margin: 0;
+                padding: 0 5px;
+                position: relative;
+                z-index: 2;
+
+                &:before {
+                    content: "";
+                    background: $black;
+                    height: 15%;
+                    width: 100%;
+                    position: absolute;
+                    bottom: 0;
+                    z-index: -1;
+                    right: -5px;
+                    transition: 0.25s;
+
+                }
+
+                &:hover {
+                    transition: 0.25s;
+                    color: $white;
+
+                    &:before {
+                        height: 100%;
+                        width: 100%;
+                        right: 0px;
+                    }
+                }
+            }
+        }
+
+        i {
+            font-size: 30px;
+            width: 30px;
+            margin-right: 10px;
+        }
     }
 }
 .contact-button {
@@ -581,6 +634,7 @@ img.avatar-dev {
         .contact-info {
             width: 90%;
             margin-top: 20px;
+            padding: 0;
         }
 
         iframe {
@@ -596,4 +650,9 @@ img.avatar-dev {
         margin-top: 10px;
     }
 
+}
+
+#innerHtml {
+    font-family: 'Ubuntu Mono';
+    font-size: 45px;
 }

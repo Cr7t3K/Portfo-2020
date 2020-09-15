@@ -86,11 +86,10 @@ class AdminController extends AbstractController
             $form = $this->createForm(ProjectType::class, $project);
             $form->handleRequest($request);
             $formCreate = $form->createView();
-
             if ($form->isSubmitted() && $form->isValid()) {
                 $repo = explode("/", $project->getGithub());
                 $project->setNameRepo(end($repo));
-                //dump($project);
+                $this->getDoctrine()->getManager()->persist($project);
                 $this->getDoctrine()->getManager()->flush();
 
                 return $this->redirectToRoute('admin_project_edit', ['project' => $project->getId()]);
@@ -216,7 +215,6 @@ class AdminController extends AbstractController
         ?Team $team
     ) {
         $currentRoute = $request->attributes->get('_route');
-        dump($currentRoute);
 
         $currentTeam = ($team)? $team:null;
         $formCreate = $newTeam = null;

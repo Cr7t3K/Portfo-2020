@@ -656,3 +656,17 @@ img.avatar-dev {
     font-family: 'Ubuntu Mono';
     font-size: 45px;
 }
+
+.maintenance {
+    background: $black;
+    display: flex;
+    justify-content: center;
+    height: 100vh;
+    align-items: center;
+    color: $white;
+    padding: 50px;
+
+    h1 {
+        font-family: 'Permanent Marker', cursive;
+    }
+}

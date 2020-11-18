@@ -24,16 +24,10 @@ class GithubManager extends AbstractManager
     {
         if (isset($info)) {
             $response = $this->client->request(
-                'GET', $this->url . $this->method . $repo . '/' . $info, [
-                'auth_basic' => [$this->id, $this->pass],
-
-            ]);
+                'GET', $this->url . $this->method . $repo . '/' . $info);
         } else {
             $response = $this->client->request(
-                'GET', $this->url . $this->method . $repo, [
-                    'auth_basic' => [$this->id, $this->pass],
-
-            ]);
+                'GET', $this->url . $this->method . $repo);
         }
 
         return $response->toArray();
